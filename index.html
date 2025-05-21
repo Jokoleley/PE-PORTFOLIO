@@ -706,9 +706,18 @@ I enjoy new challenges and adapt easily. Wheter it’s working with different sp
       var $toggle = $('#mobile-summary-toggle');
       function openMenu() {
         $sideNav.addClass('open').css({transform: 'translateX(0%)', display: 'block'});
+        // Add event listener to close menu when clicking outside
+        setTimeout(function() {
+          $(document).on('mousedown.closeMenu', function(e) {
+            if ($sideNav.hasClass('open') && !$sideNav.is(e.target) && $sideNav.has(e.target).length === 0 && !$toggle.is(e.target) && $toggle.has(e.target).length === 0) {
+              closeMenu();
+            }
+          });
+        }, 0);
       }
       function closeMenu() {
         $sideNav.removeClass('open').css({transform: '', display: 'none'});
+        $(document).off('mousedown.closeMenu');
       }
       $toggle.on('click', function (e) {
         e.preventDefault();
