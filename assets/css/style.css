@@ -737,6 +737,13 @@ small {
   h2, h3, h4, h5 {
     font-size: 1.5rem;
   }
+
+  ul#slide-out.side-nav li,
+  ul#slide-out.side-nav li a {
+    text-align: left !important;
+    justify-content: flex-start !important;
+    padding-left: 16px !important;
+  }
 }
 
 img {
