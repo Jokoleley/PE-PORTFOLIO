@@ -743,27 +743,3 @@ img {
   max-width: 100%;
   height: auto;
 }
-.profile-pic {
-  position: fixed; /* Keeps the profile picture fixed on the screen */
-  top: 10px; /* Adjust the vertical position */
-  left: 10px; /* Adjust the horizontal position */
-  z-index: 1000; /* Ensures it appears above other elements */
-  width: 80px; /* Adjust the size for mobile */
-  height: 80px;
-  border-radius: 50%; /* Keeps the circular shape */
-  border: 4px solid rgba(255, 255, 255, 0.8); /* Optional: Add a border for better visibility */
-  background-color: white; /* Optional: Add a background color */
-}
-@media only screen and (max-width: 768px) {
-  .profile-pic {
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    z-index: 1000;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 4px solid rgba(255, 255, 255, 0.8);
-    background-color: white;
-  }
-}
