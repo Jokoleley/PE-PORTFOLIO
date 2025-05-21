@@ -709,7 +709,10 @@ I enjoy new challenges and adapt easily. Wheter it’s working with different sp
         // Add event listener to close menu when clicking outside
         setTimeout(function() {
           $(document).on('mousedown.closeMenu', function(e) {
-            if ($sideNav.hasClass('open') && !$sideNav.is(e.target) && $sideNav.has(e.target).length === 0 && !$toggle.is(e.target) && $toggle.has(e.target).length === 0) {
+            // Only close if click is outside BOTH the menu and the toggle button
+            if ($sideNav.hasClass('open') &&
+                !$(e.target).closest('#slide-out').length &&
+                !$(e.target).closest('#mobile-summary-toggle').length) {
               closeMenu();
             }
           });
