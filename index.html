@@ -157,8 +157,11 @@
   <nav class="hide-on-large only trigger z-depth-1">
     <button id="mobile-summary-toggle" aria-label="Toggle visibility of the mobile navbar" data-activates="slide-out"
       class="button-collapse" style="display:inline-block; background:#008073; color:#fff; border-radius:50%; width:48px; height:48px; text-align:center; line-height:48px; box-shadow:0 2px 8px rgba(0,0,0,0.08); margin:8px 16px 8px 8px; font-size:28px; border:none; cursor:pointer;">
-      <img src="assets/img/passport-new.jpg" class="circle img-responsive profile-pic" alt="avatar" style="width:32px; height:32px; object-fit:cover; margin-top:8px; margin-bottom:-8px; display:inline-block; vertical-align:middle;" />
-      <i class="mdi-navigation-menu" style="color:#fff; vertical-align:middle;"></i>
+      <span style="display:inline-block; vertical-align:middle; width:24px; height:24px;">
+        <span style="display:block; width:24px; height:3px; background:#fff; margin:4px 0; border-radius:2px;"></span>
+        <span style="display:block; width:24px; height:3px; background:#fff; margin:4px 0; border-radius:2px;"></span>
+        <span style="display:block; width:24px; height:3px; background:#fff; margin:4px 0; border-radius:2px;"></span>
+      </span>
     </button>
     <div class="name-title">
       <a id="name" aria-label="Navigate to the beginning of the page" href="#" class="teal-text">Léo
@@ -168,7 +171,7 @@
 
   <!-- Nav class 3 -->
   <nav class="hide-on-large only">
-    <ul id="slide-out" class="side-nav" style="display: none;">
+    <ul id="slide-out" class="side-nav" style="display: none; z-index:999;">
       <li class="logo" style="background-color: #fafafa; border-bottom: 1px solid #ddd; box-sizing: content-box; min-height: 90px; padding: 30px 30px 40px; text-align:center;">
         <img src="assets/img/passport-new.jpg" class="circle img-responsive profile-pic" alt="avatar" style="width:80px; height:80px; object-fit:cover; margin:0 auto; display:block;" />
       </li>
@@ -699,23 +702,20 @@ I enjoy new challenges and adapt easily. Wheter it’s working with different sp
     // Materialize - Initializers
     $(document).ready(function () {
       $(".scrollspy").scrollSpy();
-      // Remove default sideNav trigger
-      // Custom toggle for summary
       var $sideNav = $('#slide-out');
       var $toggle = $('#mobile-summary-toggle');
+      function openMenu() {
+        $sideNav.addClass('open').css({transform: 'translateX(0%)', display: 'block'});
+      }
+      function closeMenu() {
+        $sideNav.removeClass('open').css({transform: '', display: 'none'});
+      }
       $toggle.on('click', function (e) {
         e.preventDefault();
-        $sideNav.toggleClass('open');
         if ($sideNav.hasClass('open')) {
-          $sideNav.css({transform: 'translateX(0%)', display: 'block'});
+          closeMenu();
         } else {
-          $sideNav.css({transform: '', display: ''});
-        }
-      });
-      // Optional: Hide summary when clicking outside
-      $(document).on('click touchstart', function(e) {
-        if ($sideNav.hasClass('open') && !$sideNav.is(e.target) && $sideNav.has(e.target).length === 0 && !$toggle.is(e.target) && $toggle.has(e.target).length === 0) {
-          $sideNav.removeClass('open').css({transform: '', display: ''});
+          openMenu();
         }
       });
     });
